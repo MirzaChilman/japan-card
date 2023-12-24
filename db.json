@@ -1,0 +1,603 @@
+{
+	"data": [
+		{
+			"id": 1,
+			"romaji": "tsukue",
+			"japanese": "つくえ",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "机"
+			},
+			"description": "Table",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 2,
+			"romaji": "isu",
+			"japanese": "いす",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "椅子"
+			},
+			"description": "Chair",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 3,
+			"romaji": "Tana",
+			"japanese": "たな",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "棚"
+			},
+			"description": "Shelf",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 4,
+			"romaji": "Taberu",
+			"japanese": "たべる",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "食べる"
+			},
+			"description": "Eat",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 5,
+			"romaji": "Terebi",
+			"japanese": "テレビ",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "-"
+			},
+			"description": "Television",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 6,
+			"romaji": "reizouko",
+			"japanese": "れいぞうこ",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "冷蔵庫"
+			},
+			"description": "Refrigerator",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 7,
+			"romaji": "Sentakuki",
+			"japanese": "せんたくき",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "洗濯機"
+			},
+			"description": "Washing machine",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 8,
+			"romaji": "kagami",
+			"japanese": "かがみ",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "鏡"
+			},
+			"description": "Mirror",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 9,
+			"romaji": "beddo",
+			"japanese": "ベッド",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "-"
+			},
+			"description": "Bed",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 10,
+			"romaji": "futon",
+			"japanese": "ふとん",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "布団"
+			},
+			"description": "bedding",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 11,
+			"romaji": "nichi",
+			"japanese": "にち",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "日"
+			},
+			"description": "Day",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 12,
+			"romaji": "hi",
+			"japanese": "ひ",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "日"
+			},
+			"description": "Sun",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 13,
+			"romaji": "jitsu",
+			"japanese": "じつ",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "日"
+			},
+			"description": "Reality",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 14,
+			"romaji": "suki",
+			"japanese": "すき",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "好き"
+			},
+			"description": "Like",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 15,
+			"romaji": "tsuki",
+
+			"japanese": "つき",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "月"
+			},
+			"description": "Moon",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 16,
+			"romaji": "getsuyoubi",
+			"japanese": "げつようび",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "月曜日"
+			},
+			"description": "Monday",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 17,
+			"romaji": "kinyoubi",
+			"japanese": "きんようび",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "金曜日"
+			},
+			"description": "Friday",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 18,
+			"romaji": "nichiyoubi",
+			"japanese": "にちようび",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "日曜日"
+			},
+			"description": "Sunday",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 19,
+			"romaji": "kayoubi",
+			"japanese": "かようび",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "火曜日"
+			},
+			"description": "Tuesday",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 20,
+			"romaji": "suiyoubi",
+			"japanese": "すいようび",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "水曜日"
+			},
+			"description": "Wednesday",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 21,
+			"romaji": "mokuyoubi",
+			"japanese": "もくようび",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "木曜日"
+			},
+			"description": "Thursday",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 22,
+			"romaji": "doa",
+			"japanese": "ドア",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "-"
+			},
+			"description": "Door",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 23,
+			"romaji": "mado",
+			"japanese": "まど",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "窓"
+			},
+			"description": "Window",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 24,
+			"romaji": "Kāten",
+			"japanese": "カーテン",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "-"
+			},
+			"description": "Curtain",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 25,
+			"romaji": "Garasu",
+			"japanese": "ガラス",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "-"
+			},
+			"description": "Glass",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 26,
+			"romaji": "hon",
+			"japanese": "ほん",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "本"
+			},
+			"description": "Book",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 27,
+			"romaji": "enpitsu",
+			"japanese": "えんぴつ",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "鉛筆"
+			},
+			"description": "Pencil",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 28,
+			"romaji": "ka",
+			"japanese": "か",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "火"
+			},
+			"description": "Fire",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 29,
+			"romaji": "kane",
+			"japanese": "かね",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "金"
+			},
+			"description": "Money",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 30,
+			"romaji": "mizu",
+			"japanese": "みず",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "水"
+			},
+			"description": "Water",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 31,
+			"romaji": "sui",
+			"japanese": "すい",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "水"
+			},
+			"description": "Water",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 32,
+			"romaji": "houchyo",
+			"japanese": "ほうちょう",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "包丁"
+			},
+			"description": "Knife",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 33,
+			"romaji": "supuu-n",
+			"japanese": "スプーン",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "-"
+			},
+			"description": "Spoon",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 34,
+			"romaji": "foku",
+			"japanese": "フォーク",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "-"
+			},
+			"description": "Fork",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 35,
+			"romaji": "hashi",
+			"japanese": "はし",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "箸"
+			},
+			"description": "Chopsticks",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 36,
+			"romaji": "sara",
+			"japanese": "さら",
+			"kanji": {
+				"onyomi": "-",
+				"kunyomi": "皿"
+			},
+			"description": "Plate",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 37,
+			"romaji": "koppu",
+			"japanese": "コップ",
+			"kanji": { "onyomi": "-", "kunyomi": "-" },
+			"description": "Glass",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 38,
+			"romaji": "kappu",
+			"japanese": "カップ",
+			"kanji": { "onyomi": "-", "kunyomi": "-" },
+			"description": "Cup",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 39,
+			"romaji": "ki",
+			"japanese": "き",
+			"kanji": { "onyomi": "-", "kunyomi": "木" },
+			"description": "Tree",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 40,
+			"romaji": "kane",
+			"japanese": "かね",
+			"kanji": { "onyomi": "-", "kunyomi": "金" },
+			"description": "Money",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 41,
+			"romaji": "pasokon",
+			"japanese": "パソコン",
+			"kanji": { "onyomi": "-", "kunyomi": "-" },
+			"description": "Computer",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 42,
+			"romaji": "sumaho",
+			"japanese": "スマホ",
+			"kanji": { "onyomi": "-", "kunyomi": "-" },
+			"description": "Smartphone",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 43,
+			"romaji": "eakon",
+			"japanese": "エアコン",
+			"kanji": { "onyomi": "-", "kunyomi": "-" },
+			"description": "Air conditioner",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 44,
+			"romaji": "senpuuki",
+			"japanese": "せんぷうき",
+			"kanji": { "onyomi": "-", "kunyomi": "扇風機" },
+			"description": "Fan",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 45,
+			"romaji": "airon",
+			"japanese": "アイロン",
+			"kanji": { "onyomi": "-", "kunyomi": "-" },
+			"description": "Iron",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 46,
+			"romaji": "tsuchi",
+			"japanese": "つち",
+			"kanji": { "onyomi": "-", "kunyomi": "土" },
+			"description": "Soil",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 47,
+			"romaji": "do",
+			"japanese": "ど",
+			"kanji": { "onyomi": "-", "kunyomi": "土" },
+			"description": "Soil",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 48,
+			"romaji": "ishi",
+			"japanese": "いし",
+			"kanji": { "onyomi": "-", "kunyomi": "石" },
+			"description": "Stone",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		},
+		{
+			"id": 49,
+			"romaji": "seki",
+			"japanese": "せき",
+			"kanji": { "onyomi": "-", "kunyomi": "石" },
+			"description": "Stone",
+			"checked": false,
+			"group": "1",
+			"level": "N5"
+		}
+	]
+}
