@@ -11,35 +11,37 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { DataNew } from "../page";
 
 const StudyPage = () => {
 	const router = useRouter();
-	const [data, setData] = useState<GroupDataById | null>(null);
+	const [data, setData] = useState<DataNew[]>([]);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [reveal, setReveal] = useState(false);
 
-	const shuffleData = useCallback((originalData: GroupDataById) => {
-		const keys = Object.keys(originalData);
+	const shuffleData = useCallback((originalData: DataNew[]) => {
+		const data = [...originalData]; // create a copy of the original data
+		let currentIndex = data.length;
 
-		for (let i = keys.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[keys[i], keys[j]] = [keys[j], keys[i]];
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+			// Pick a remaining element...
+			const randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			const temporaryValue = data[currentIndex];
+			data[currentIndex] = data[randomIndex];
+			data[randomIndex] = temporaryValue;
 		}
 
-		const shuffled: GroupDataById = {};
-		let index = 0;
-		for (const key of keys) {
-			shuffled[index] = originalData[key];
-			index++;
-		}
-
-		return shuffled;
+		return data;
 	}, []);
 
 	useEffect(() => {
 		const savedData = localStorage.getItem("data");
 		if (savedData) {
-			const parsedData: GroupDataById = JSON.parse(savedData);
+			const parsedData = JSON.parse(savedData);
 			const shuffledData = shuffleData(parsedData);
 			setData(shuffledData);
 		}
@@ -78,11 +80,7 @@ const StudyPage = () => {
 
 	const currentData = data?.[currentIndex];
 
-	console.log({ data });
-
-	const hasKanji =
-		currentData &&
-		(currentData.kanji.onyomi !== "-" || currentData.kanji.kunyomi !== "-");
+	const hasKanji = currentData?.kanji;
 
 	return (
 		// biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation>
@@ -92,7 +90,7 @@ const StudyPage = () => {
 				<Button onClick={handleRefresh}>Refresh</Button>
 			</div>
 			<section>
-				<Card className="w-2/3 mx-auto mt-5 shadow-xl text-center">
+				<Card className="w-full mx-auto mt-5 flex flex-col shadow-xl text-center min-h-[400px]">
 					{!currentData && (
 						<p className="text-3xl flex justify-center h-[278px] items-center">
 							Finish
@@ -100,23 +98,14 @@ const StudyPage = () => {
 					)}
 					{currentData && (
 						<>
-							<CardHeader>
+							<CardHeader className="flex-2">
 								<CardTitle className="text-5xl">
-									{hasKanji ? (
-										<>
-											{currentData.kanji.kunyomi} /{currentData.kanji.onyomi}
-										</>
-									) : (
-										<span>{currentData.japanese}</span>
-									)}
+									{hasKanji ? currentData.kanji : currentData.vocabulary}
 								</CardTitle>
 							</CardHeader>
-							<CardContent>
+							<CardContent className="flex-1 text-left">
 								<CardDescription className="text-2xl">
-									{reveal ? currentData.romaji : "-"}
-								</CardDescription>
-								<CardDescription className="text-2xl">
-									{reveal ? currentData.japanese : "-"}
+									{reveal ? currentData.vocabulary : "-"}
 								</CardDescription>
 								<CardDescription className="text-2xl">
 									{reveal ? currentData.description : "-"}

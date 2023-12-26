@@ -19,14 +19,16 @@ import {
 	getCoreRowModel,
 } from "@tanstack/react-table";
 import * as XLSX from "xlsx";
+import Row from "./components/Row";
 
-interface DataNew {
+export interface DataNew {
 	id: number;
 	kanji: string;
 	vocabulary: string;
 	description: string;
 	freq: number;
 	group: string;
+	checked?: boolean;
 }
 
 export default function Home() {
@@ -35,7 +37,7 @@ export default function Home() {
 	const [data, setData] = useState<DataNew[]>([]);
 	const [isAllChecked, setIsAllChecked] = useState(false);
 
-	const saveToLocalStorage = useCallback((data: GroupDataById) => {
+	const saveToLocalStorage = useCallback((data: DataNew[]) => {
 		localStorage.setItem("data", JSON.stringify(data));
 	}, []);
 
@@ -45,35 +47,26 @@ export default function Home() {
 		inputFile.current?.click();
 	};
 
-	const handleAllClick = () => {
-		// const newData = data.map((datum) => {
-		// 	return { ...datum, checked: !isAllChecked };
-		// });
-		// setIsAllChecked(!isAllChecked);
-		// setData(newData);
-	};
+	const handleAllClick = useCallback(() => {
+		setIsAllChecked((prev) => !prev);
 
-	const handleRowClick = (index: number) => {
-		// const newData = data.map((datum, i) => {
-		// 	if (i === index) {
-		// 		return { ...datum, checked: !datum.checked };
-		// 	}
-		// 	return datum;
-		// });
-		// setData(newData);
-	};
+		setData((prevData) =>
+			prevData.map((datum) => ({ ...datum, checked: !isAllChecked })),
+		);
+	}, [isAllChecked]);
+
+	const handleRowClick = useCallback((id: number) => {
+		setData((prevData) =>
+			prevData.map((datum) =>
+				datum.id === id ? { ...datum, checked: !datum.checked } : datum,
+			),
+		);
+	}, []);
 
 	const handleStudyButtonClick = () => {
-		// const newData = data.filter((datum) => datum.checked);
-		// const groupedData = newData.reduce<Record<string, Data>>(
-		// 	(acc, datum, index) => {
-		// 		acc[index] = datum;
-		// 		return acc;
-		// 	},
-		// 	{},
-		// );
-		// saveToLocalStorage(groupedData);
-		// router.push("/study");
+		const newData = data.filter((datum) => datum.checked);
+		saveToLocalStorage(newData);
+		router.push("/study");
 	};
 
 	const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -87,9 +80,6 @@ export default function Home() {
 			const jsonData = XLSX.utils.sheet_to_json<DataNew>(worksheet, {
 				blankrows: false,
 			});
-			const rows = jsonData.slice(1);
-			console.log({ rows });
-
 			setData(jsonData);
 		};
 		reader.readAsArrayBuffer(file);
@@ -99,7 +89,7 @@ export default function Home() {
 
 	return (
 		<main className="m-5">
-			<div>
+			<div className="flex gap-2">
 				<Button onClick={handleStudyButtonClick}>Study</Button>
 				<Button onClick={handleImportClick}>
 					Import data
@@ -133,23 +123,20 @@ export default function Home() {
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{data.map((datum, index) => {
+						{data.map((datum) => {
 							if (!datum.vocabulary) return;
 							return (
-								<TableRow key={datum.id + index}>
-									<TableCell>
-										<input
-											onClick={() => handleRowClick(index)}
-											type="checkbox"
-										/>
-									</TableCell>
-									<TableCell>{datum?.id}</TableCell>
-									<TableCell>{datum?.vocabulary}</TableCell>
-									<TableCell>{datum?.kanji}</TableCell>
-									<TableCell>{datum?.description}</TableCell>
-									<TableCell>{datum?.group}</TableCell>
-									<TableCell>{datum?.freq}</TableCell>
-								</TableRow>
+								<Row
+									key={datum.id}
+									id={datum.id}
+									vocabulary={datum.vocabulary}
+									kanji={datum.kanji}
+									description={datum.description}
+									group={datum.group}
+									freq={datum.freq}
+									checked={datum?.checked || false}
+									onClick={handleRowClick}
+								/>
 							);
 						})}
 					</TableBody>
