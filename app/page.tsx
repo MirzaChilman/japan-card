@@ -20,10 +20,19 @@ import {
 } from "@tanstack/react-table";
 import * as XLSX from "xlsx";
 
+interface DataNew {
+	id: number;
+	kanji: string;
+	vocabulary: string;
+	description: string;
+	freq: number;
+	group: string;
+}
+
 export default function Home() {
 	const router = useRouter();
 
-	const [data, setData] = useState<string[]>([]);
+	const [data, setData] = useState<DataNew[]>([]);
 	const [isAllChecked, setIsAllChecked] = useState(false);
 
 	const saveToLocalStorage = useCallback((data: GroupDataById) => {
@@ -75,20 +84,18 @@ export default function Home() {
 			const workbook = XLSX.read(data, { type: "array" });
 			const worksheetName = workbook.SheetNames[0];
 			const worksheet = workbook.Sheets[worksheetName];
-			const jsonData = XLSX.utils.sheet_to_json<string>(worksheet, {
-				header: 1,
+			const jsonData = XLSX.utils.sheet_to_json<DataNew>(worksheet, {
+				blankrows: false,
 			});
-			const filteredData = jsonData.filter((row) =>
-				Object.values(row).some((value) => value !== null && value !== ""),
-			);
-			setData(filteredData);
+			const rows = jsonData.slice(1);
+			console.log({ rows });
+
+			setData(jsonData);
 		};
 		reader.readAsArrayBuffer(file);
 	};
 
 	const isEmpty = data.length === 0;
-
-	console.log({ data });
 
 	return (
 		<main className="m-5">
@@ -117,29 +124,31 @@ export default function Home() {
 									checked={isAllChecked}
 								/>{" "}
 							</TableHead>
-							<TableHead>{data[0][0]}</TableHead>
-							<TableHead>{data[0][1]}</TableHead>
-							<TableHead>{data[0][2]}</TableHead>
-							<TableHead>{data[0][3]}</TableHead>
-							<TableHead>{data[0][4]}</TableHead>
+							<TableHead>Id</TableHead>
+							<TableHead>Vocabulary</TableHead>
+							<TableHead>Kanji</TableHead>
+							<TableHead>Description</TableHead>
+							<TableHead>Group</TableHead>
+							<TableHead>Freq</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
 						{data.map((datum, index) => {
-							if (index === 0) return;
+							if (!datum.vocabulary) return;
 							return (
-								<TableRow key={datum[0] + index}>
+								<TableRow key={datum.id + index}>
 									<TableCell>
 										<input
 											onClick={() => handleRowClick(index)}
 											type="checkbox"
 										/>
 									</TableCell>
-									<TableCell>{datum?.[0]}</TableCell>
-									<TableCell>{datum?.[1]}</TableCell>
-									<TableCell>{datum?.[2]}</TableCell>
-									<TableCell>{datum?.[3]}</TableCell>
-									<TableCell>{datum?.[4]}</TableCell>
+									<TableCell>{datum?.id}</TableCell>
+									<TableCell>{datum?.vocabulary}</TableCell>
+									<TableCell>{datum?.kanji}</TableCell>
+									<TableCell>{datum?.description}</TableCell>
+									<TableCell>{datum?.group}</TableCell>
+									<TableCell>{datum?.freq}</TableCell>
 								</TableRow>
 							);
 						})}
@@ -147,7 +156,7 @@ export default function Home() {
 					<TableFooter>
 						<TableRow>
 							<TableCell colSpan={3}>Total</TableCell>
-							<TableCell className="text-right">{dummyData.length}</TableCell>
+							<TableCell className="text-right">{data.length - 1}</TableCell>
 						</TableRow>
 					</TableFooter>
 				</Table>
