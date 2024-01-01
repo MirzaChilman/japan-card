@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import { Data, GroupDataById } from "../dummyTableData";
 import {
 	Card,
 	CardContent,

@@ -9,17 +9,15 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { Data, GroupDataById, dummyData } from "./dummyTableData";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import {
-	useReactTable,
-	type ColumnDef,
-	getCoreRowModel,
-} from "@tanstack/react-table";
 import * as XLSX from "xlsx";
 import Row from "./components/Row";
+import { EmptyState } from "./components/EmptyState";
+import { HeaderAction } from "./components/HeaderAction";
+import { useAtom, useAtomValue } from "jotai";
+import { dataAtom, dataGroupAtom, selectedGroupAtom } from "./atom/data";
 
 export interface DataNew {
 	id: number;
@@ -34,7 +32,9 @@ export interface DataNew {
 export default function Home() {
 	const router = useRouter();
 
-	const [data, setData] = useState<DataNew[]>([]);
+	const [data, setData] = useAtom(dataAtom);
+	const group = useAtomValue(dataGroupAtom);
+	const selectedGroup = useAtomValue(selectedGroupAtom);
 	const [isAllChecked, setIsAllChecked] = useState(false);
 
 	const saveToLocalStorage = useCallback((data: DataNew[]) => {
@@ -47,21 +47,33 @@ export default function Home() {
 		inputFile.current?.click();
 	};
 
-	const handleAllClick = useCallback(() => {
+	const filteredData = useMemo(() => {
+		return data.filter((datum) =>
+			selectedGroup
+				? datum.group?.toLocaleLowerCase() ===
+				  selectedGroup?.toLocaleLowerCase()
+				: true,
+		);
+	}, [data, selectedGroup]);
+
+	const handleAllChange = useCallback(() => {
 		setIsAllChecked((prev) => !prev);
 
-		setData((prevData) =>
-			prevData.map((datum) => ({ ...datum, checked: !isAllChecked })),
+		setData(
+			filteredData.map((datum) => ({ ...datum, checked: !isAllChecked })),
 		);
-	}, [isAllChecked]);
+	}, [filteredData, isAllChecked, setData]);
 
-	const handleRowClick = useCallback((id: number) => {
-		setData((prevData) =>
-			prevData.map((datum) =>
-				datum.id === id ? { ...datum, checked: !datum.checked } : datum,
-			),
-		);
-	}, []);
+	const handleRowChange = useCallback(
+		(id: number) => {
+			setData((prevData) =>
+				prevData.map((datum) =>
+					datum.id === id ? { ...datum, checked: !datum.checked } : datum,
+				),
+			);
+		},
+		[setData],
+	);
 
 	const handleStudyButtonClick = () => {
 		const newData = data.filter((datum) => datum.checked);
@@ -102,14 +114,16 @@ export default function Home() {
 					/>
 				</Button>
 			</div>
+			<HeaderAction />
+			{isEmpty && <EmptyState onClick={handleImportClick} />}
 			{!isEmpty && (
-				<Table>
+				<Table className="mt-5">
 					<TableCaption>A list of your japanese.</TableCaption>
 					<TableHeader>
 						<TableRow>
 							<TableHead>
 								<input
-									onClick={handleAllClick}
+									onChange={handleAllChange}
 									type="checkbox"
 									checked={isAllChecked}
 								/>{" "}
@@ -123,7 +137,7 @@ export default function Home() {
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{data.map((datum) => {
+						{filteredData.map((datum) => {
 							if (!datum.vocabulary) return;
 							return (
 								<Row
@@ -135,7 +149,7 @@ export default function Home() {
 									group={datum.group}
 									freq={datum.freq}
 									checked={datum?.checked || false}
-									onClick={handleRowClick}
+									onChange={handleRowChange}
 								/>
 							);
 						})}

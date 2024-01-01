@@ -8,7 +8,7 @@ interface Props {
 	group: string;
 	freq: number;
 	checked: boolean;
-	onClick: (id: number) => void;
+	onChange: (id: number) => void;
 }
 
 const Row = ({
@@ -19,13 +19,16 @@ const Row = ({
 	group,
 	freq,
 	checked,
-	onClick,
+	onChange,
 }: Props) => {
-	console.log("rendered");
 	return (
 		<TableRow key={id}>
 			<TableCell>
-				<input onClick={() => onClick(id)} type="checkbox" checked={checked} />
+				<input
+					onChange={() => onChange(id)}
+					type="checkbox"
+					checked={checked}
+				/>
 			</TableCell>
 			<TableCell>{id}</TableCell>
 			<TableCell>{vocabulary}</TableCell>
