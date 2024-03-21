@@ -7,7 +7,7 @@ on:
       
 env:
   PROJECT_ID: ${{secrets.CLOUD_RUN_PROJECT_NAME}}
-  REGION: use-east1
+  REGION: us-east1
   REPO_NAME: japan-card
 
 jobs:
