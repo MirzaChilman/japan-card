@@ -4,7 +4,7 @@ const {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /** your config here */
+  output: "standalone",
 };
 
 module.exports = withHydrationOverlay({
